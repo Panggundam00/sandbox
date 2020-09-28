@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-       $posts = Post::get() ;
+       $posts = Post::paginate(10) ;
        return view('posts.index', [
            'posts' => $posts
        ]);
@@ -69,7 +69,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id) ;
+        return view('posts.edit', [
+            'post' => $post
+        ]) ;
     }
 
     /**
@@ -81,7 +84,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id) ;
+        $post->title = $request->input('title') ;
+        $post->content = $request->input('content') ;
+        $post->save() ;
+        return redirect()->route('posts.show', ['post' => $post->id]) ;
     }
 
     /**
@@ -92,6 +99,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id) ;
+        $post->delete() ;
+        return redirect()->route('posts.index') ;
     }
 }

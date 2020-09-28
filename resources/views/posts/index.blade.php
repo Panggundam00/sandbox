@@ -3,7 +3,7 @@
     <h1>รายการโพสต์</h1>
 
     <a href="{{route('posts.create')}}">สร้างโพสต์ใหม่</a>
-
+    {{ $posts->links() }}
     @foreach($posts as $post)
         <div class="card mb-3" style="width: 18rem;">
             <div class="card-body">
