@@ -17,13 +17,14 @@ class PostSeeder extends Seeder
         $post = new Post ;
         $post->title = 'hello world' ;
         $post->content = 'this is first post' ;
+        $post->user_id = 1 ;
         $post->save() ;
 
         $post = new Post ;
         $post->title = 'hello crewmate' ;
         $post->content = 'this is second post' ;
+        $post->user_id = 2 ;
         $post->save() ;
 
-        Post::factory()->count(100)->create() ;
     }
 }

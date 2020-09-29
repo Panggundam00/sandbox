@@ -38,9 +38,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:5|max:100',
+            'content' => 'required|min:5|max:500'
+        ]);
         $post = new Post ;
         $post->title = $request->input('title') ;
         $post->content = $request->input('content') ;
+        $post->user_id = $request->user()->id ;
         $post->save() ;
         return redirect()->route('posts.index');
     }
@@ -85,6 +90,10 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id) ;
+        $request->validate([
+            'title' => 'required|min:5|max:100',
+            'content' => 'required|min:5|max:500'
+        ]);
         $post->title = $request->input('title') ;
         $post->content = $request->input('content') ;
         $post->save() ;

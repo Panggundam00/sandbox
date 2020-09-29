@@ -46,3 +46,7 @@ Route::get('/pages', [PagesController::class, 'index'])->name('pages.index') ;
 Route::get('/pages/{id}', [PagesController::class, 'show'])->name('pages.show');
 
 Route::resource('/posts', PostsController::class) ;
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia\Inertia::render('Dashboard');
+})->name('dashboard');
