@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 class PostsController extends Controller
 {
@@ -27,6 +28,10 @@ class PostsController extends Controller
      */
     public function create()
     {
+//        if (Gate::denies('create-post')){
+//            return redirect()->route('posts.index') ;
+//        }
+        $this->authorize('create', Post::class) ;
         return view('posts.create') ;
     }
 
@@ -38,6 +43,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Post::class) ;
         $request->validate([
             'title' => 'required|min:5|max:100',
             'content' => 'required|min:5|max:500'
@@ -75,6 +81,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id) ;
+        $this->authorize('update', $post) ;
         return view('posts.edit', [
             'post' => $post
         ]) ;

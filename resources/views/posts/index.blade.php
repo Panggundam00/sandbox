@@ -4,13 +4,18 @@
 
 
 
-    @if(\Illuminate\Support\Facades\Auth::check())
+    @if(Auth::check())
 
 
     <p>Hello {{ Auth::User()->name }}</p>
-
-    <a href="{{route('posts.create')}}">สร้างโพสต์ใหม่</a>
     @endif
+
+    @can('create' ,\App\Models\Post::class)
+    <a href="{{route('posts.create')}}">สร้างโพสต์ใหม่</a>
+
+    @else
+        <p>you can't create post</p>
+    @endcan
     {{ $posts->links() }}
     @foreach($posts as $post)
         <div class="card mb-3" style="width: 18rem;">

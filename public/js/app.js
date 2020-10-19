@@ -25101,7 +25101,7 @@ var render = function() {
               _c("div", { staticClass: "flex-shrink-0 flex items-center" }, [
                 _c(
                   "a",
-                  { attrs: { href: "/dashboard" } },
+                  { attrs: { href: "/posts" } },
                   [
                     _c("jet-application-mark", {
                       staticClass: "block h-9 w-auto"
@@ -25111,27 +25111,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" },
-                [
-                  _c(
-                    "jet-nav-link",
-                    {
-                      attrs: {
-                        href: "/dashboard",
-                        active: _vm.$page.currentRouteName == "dashboard"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Dashboard\n                        "
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
+              _vm._m(0)
             ]),
             _vm._v(" "),
             _c(
@@ -25706,7 +25686,24 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" },
+      [
+        _c("a", { attrs: { href: "/posts" } }, [
+          _vm._v(
+            "\n                            Back to posts\n                        "
+          )
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

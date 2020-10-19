@@ -7,16 +7,16 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <a href="/dashboard">
+                            <a href="/posts">
                                 <jet-application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
 
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <jet-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
-                                Dashboard
-                            </jet-nav-link>
+                            <a href="/posts" >
+                                Back to posts
+                            </a>
                         </div>
                     </div>
 

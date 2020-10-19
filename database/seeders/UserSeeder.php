@@ -19,12 +19,14 @@ class UserSeeder extends Seeder
         $user->name = "Administrator" ;
         $user->email = "admin@sandbox.com" ;
         $user->password = Hash::make('adminpass') ;
+        $user->role = 'ADMIN' ;
         $user->save() ;
 
         $user = new User ;
         $user->name = "Alice" ;
         $user->email = "alice@wonderland.com" ;
         $user->password = Hash::make('eatmeplease') ;
+        $user->role = 'CREATOR' ;
         $user->save() ;
 
         User::factory()->count(10)->hasPosts(3)->create() ;

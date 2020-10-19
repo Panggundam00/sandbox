@@ -18,9 +18,21 @@
             </li>
 {{--            {{ \Route::currentRouteName() }}--}}
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav">
+            @auth
+                <li class="nav-item">
+                    <a href="{{ route('profile.show') }}" class="nav-link">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+                </li>
+            @endauth
+
+            @guest
+            <li class="nav-item">
+                <a href="{{ route('login') }}" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('register') }}" class="nav-link">Register</a>
+            </li>
+            @endguest
+        </ul>
     </div>
 </nav>
